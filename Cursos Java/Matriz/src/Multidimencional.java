@@ -20,7 +20,7 @@ public class Multidimencional {
 //        listaNumeros[2][1] = 2;
 //        listaNumeros[2][2] = 3;
 //        listaNumeros[2][3] = 4;
-        
+
 //        listaNumeros[2][4] = 5;
 
         int [][] listaNumeros = {{1,2,3,4,5},{1,2,3,4,5,9},{1,2,3,4,5}};
