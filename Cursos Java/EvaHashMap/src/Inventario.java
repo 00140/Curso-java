@@ -32,10 +32,10 @@ public class Inventario {
                     JOptionPane.showMessageDialog(null, verHashMAp(inventario));
                     break;
                 case "2":
-                    agregarHasMap(inventario);
+                    agregarHashMap(inventario);
                         break;
                 case "3":
-                    actulizarHasMap(inventario);
+                    actulizarHashMap(inventario);
                         break;
                 case "4":
                     eliminarHashMap(inventario);
@@ -59,7 +59,7 @@ public class Inventario {
         return contenido.toString();
     }
 
-    private void agregarHasMap(HashMap<String,Integer> hashMap){
+    private void agregarHashMap(HashMap<String,Integer> hashMap){
         try {
             String key = JOptionPane.showInputDialog(null,"\nColoque la llave a agregar: ");
             String valoresStr = JOptionPane.showInputDialog(null, "Coloque los valores de la llave colocada: ");
@@ -69,7 +69,7 @@ public class Inventario {
         }catch (Exception e){}
 
     }
-    private void actulizarHasMap(HashMap<String,Integer> hashMap){
+    private void actulizarHashMap(HashMap<String,Integer> hashMap){
         try {
             Set<String> keysSet = hashMap.keySet();
             Object[] keysArray = keysSet.toArray();
