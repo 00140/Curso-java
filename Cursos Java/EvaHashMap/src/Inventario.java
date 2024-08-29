@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Set;
 
 public class Inventario {
@@ -25,7 +24,8 @@ public class Inventario {
                     "2. Agregar Producto\n" +
                     "3. Actualizar stock de producto\n" +
                     "4. Eliminar producto\n" +
-                    "5. Salir");
+                    "5. Salir\n" +
+                    "Selecciona una opcion: ");
 
             switch (opcion){
                 case "1":
