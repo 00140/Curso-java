@@ -1,7 +1,18 @@
-public abstract class HamburguesaDecorator extends Ingredientes {
-    private final Ingredientes ingredientes;
-    public HamburguesaDecorator(Ingredientes ingredientes) {
-        this.ingredientes = ingredientes;
+public abstract class HamburguesaDecorator implements Hamburguesa {
+
+    private final Hamburguesa hamburguesa;
+
+    public HamburguesaDecorator(Hamburguesa hamburguesa) {
+        this.hamburguesa = hamburguesa;
     }
 
+    @Override
+    public String getdescripcionhamburguesa() {
+        return hamburguesa.getdescripcionhamburguesa();
+    }
+
+    @Override
+    public int getcostohamburguesa() {
+        return hamburguesa.getcostohamburguesa();
+    }
 }

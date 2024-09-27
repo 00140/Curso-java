@@ -1,4 +1,4 @@
 public interface Hamburguesa {
-    void descripcionhamburguesa();
-    void costohamburguesa();
+    String getdescripcionhamburguesa();
+    int getcostohamburguesa();
 }

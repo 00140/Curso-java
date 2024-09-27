@@ -13,7 +13,6 @@ public class Inventario {
         inventario.put("Tablet", 15);
         inventario.put("Audifonos", 30);
 
-
     }
     public void crearMenu(){
         String opcion = "5";
