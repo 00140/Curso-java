@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Curso-java.iml" filepath="$PROJECT_DIR$/.idea/Curso-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/Cursos Java.iml" filepath="$PROJECT_DIR$/Cursos Java/Cursos Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cursos Java/EvaDecorator/EvaDecorator.iml" filepath="$PROJECT_DIR$/Cursos Java/EvaDecorator/EvaDecorator.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/EvaHashMap/EvaHashMap.iml" filepath="$PROJECT_DIR$/Cursos Java/EvaHashMap/EvaHashMap.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/Matriz/Matriz.iml" filepath="$PROJECT_DIR$/Cursos Java/Matriz/Matriz.iml" />
     </modules>
