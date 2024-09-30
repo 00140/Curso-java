@@ -10,11 +10,14 @@ public class Ingredientes {
         ingredientes.put("Carne", 15);
         ingredientes.put("Jitomate", 30);
         ingredientes.put("Carne Arrachera", 100);
+        ingredientes.put("Cecina", 75);
 
-        listIngredientes = new String[ingredientes.size()+1];
+        listIngredientes = new String[tamanioIngredientes()];
+        System.out.println(tamanioIngredientes());
 
-
-
+    }
+    public int tamanioIngredientes(){
+         return ingredientes.size()+1;
     }
     public String listaIngredietes(){
         StringBuilder contenido = new StringBuilder();
@@ -27,10 +30,9 @@ public class Ingredientes {
         return contenido.toString();
     }
     public Hamburguesa factoryIngredientes(int SelecIngrediente, Hamburguesa hamburguesa){
-        System.out.println(listIngredientes[SelecIngrediente]);
-
-
-            return new Ingrediente(hamburguesa, listIngredientes[SelecIngrediente], ingredientes.get(listIngredientes[SelecIngrediente]));
+        String descripcion = listIngredientes[SelecIngrediente];
+        int costo = ingredientes.get(descripcion);
+        return new Ingrediente(hamburguesa, descripcion, costo);
     }
 
 
@@ -55,31 +57,4 @@ public class Ingredientes {
             return super.getcostohamburguesa() + costo;
         }
     }
-    public static Hamburguesa Lechuga(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Lechuga", 10);
-    }
-    public static Hamburguesa Jitomate(Hamburguesa hamburguesa) {
-
-        return new Ingrediente(hamburguesa, "Jitomate", 15);
-    }
-    public static Hamburguesa Pinia(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Piña", 9);
-    }
-    public static Hamburguesa Jamon(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Jamón", 8);
-    }
-    public static Hamburguesa Salami(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Salami", 20);
-    }
-    public static Hamburguesa Pepinillos(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Pepinillo", 5);
-    }
-    public static Hamburguesa Carne(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Carne", 50);
-    }
-    public static Hamburguesa Queso(Hamburguesa hamburguesa) {
-        return new Ingrediente(hamburguesa, "Queso", 12);
-    }
-
-
 }
