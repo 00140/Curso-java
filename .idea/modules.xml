@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/Cursos Java.iml" filepath="$PROJECT_DIR$/Cursos Java/Cursos Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/EvaDecorator/EvaDecorator.iml" filepath="$PROJECT_DIR$/Cursos Java/EvaDecorator/EvaDecorator.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/EvaHashMap/EvaHashMap.iml" filepath="$PROJECT_DIR$/Cursos Java/EvaHashMap/EvaHashMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cursos Java/EvaSockets/EvaSockets.iml" filepath="$PROJECT_DIR$/Cursos Java/EvaSockets/EvaSockets.iml" />
       <module fileurl="file://$PROJECT_DIR$/Cursos Java/Matriz/Matriz.iml" filepath="$PROJECT_DIR$/Cursos Java/Matriz/Matriz.iml" />
     </modules>
   </component>
