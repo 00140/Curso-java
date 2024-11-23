@@ -19,7 +19,7 @@ public class Ventana extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.darkGray); //cambiar fondo
-        panel.setLayout(new GridLayout());
+        panel.setLayout(new GridLayout(8,2));
 
         GridBagConstraints constraints = new GridBagConstraints();
 
