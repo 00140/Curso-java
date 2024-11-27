@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Conexion {
+public class ConexionC {
     private int PUERTO; //Puerto para la conexión
     private String HOST; //Host para la conexión
     protected String mensajeServidor; //Mensajes entrantes (recibidos) en el servidor
@@ -30,7 +30,7 @@ public class Conexion {
         this.HOST = HOST;
     }
 
-    public Conexion(String tipo) throws IOException //Constructor
+    public ConexionC(String tipo) throws IOException //Constructor
     {
             cs = new Socket(HOST, PUERTO); //Socket para el cliente en localhost en puerto 1234
 

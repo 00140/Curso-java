@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Listener implements ActionListener {
 
@@ -14,10 +15,8 @@ public class Listener implements ActionListener {
     private JTextArea etiquetaHexa;
     private JTextArea etiquetaMensaje;
 
-    private String textoEtiquetaMensaje = "hola\n";
-
         // Constructor que recibe las tres etiquetas para modificarlas
-    public Listener(Variables variables,JLabel etiquetaIp, JLabel etiquetaPuerto, JTextArea etiquetaHexa,JTextArea etiquetaMensaje) {
+    public void ListenerEtiquetas(Variables variables,JLabel etiquetaIp, JLabel etiquetaPuerto, JTextArea etiquetaHexa,JTextArea etiquetaMensaje) {
             this.etiquetaIp = etiquetaIp;
             this.etiquetaPuerto = etiquetaPuerto;
             this.etiquetaHexa = etiquetaHexa;
@@ -34,15 +33,18 @@ public class Listener implements ActionListener {
             // Cambiar el texto de la etiqueta correspondiente según el botón presionado
             switch (textoBoton) {
                 case "Iniciar":
-
-
                     etiquetaIp.setText(variables.getIP());
                     etiquetaPuerto.setText(""+variables.getPuerto());
-                    String textoIniciar = "Iniciado...";
-                    etiquetaMensaje.setText(textoEtiquetaMensaje + textoIniciar);
+                    variables.setMensajeEntrada("iniciado...");
+                    agregarTextoMensaje(variables);
 
-//                        Servidor serv = new Servidor();
-//                        serv.startServer();
+                    Servidor serv = null;
+                    try {
+                        serv = new Servidor(variables);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    serv.startServer();
                     break;
                 case "Enviar":
 
@@ -52,5 +54,16 @@ public class Listener implements ActionListener {
                     break;
 
         }
+    }
+    public void agregarTextoMensaje(Variables variables) {
+        new Timer(1, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!Objects.equals(variables.getMensajeEntrada(), "")) {
+                    etiquetaMensaje.append(variables.getMensajeEntrada() + "\n");// Agrega el texto con salto de línea
+                    variables.setMensajeEntrada("");
+                }
+            }
+        }).start();
     }
 }

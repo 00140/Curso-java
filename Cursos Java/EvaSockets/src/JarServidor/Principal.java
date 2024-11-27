@@ -1,5 +1,8 @@
 package JarServidor;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.InetAddress;
 
 public class Principal {
@@ -9,6 +12,15 @@ public class Principal {
         variables.setIP(obtenerIP());
 
         Ventana ventana1 = new Ventana(variables);
+        Listener listener = new Listener();
+
+//        new Timer(5000, new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                variables.setMensajeEntrada("hola");
+//            }
+//        }).start();
+
 
     }
     public static String obtenerIP(){

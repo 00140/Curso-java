@@ -1,26 +1,23 @@
-package JarServidor;
+package JarCliente;
+
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 
-public class Ventana extends JFrame {
-
-
-    public Ventana(Variables variables){
+public class VentanaC extends JFrame{
+    public VentanaC(VariablesC variablesC){
         this.setSize(500,350); //tamaño de la ventana
 //        setResizable(false); //No cambiara de tamaño
         setLocationRelativeTo(null); //colocar ventana al centro
 
-        panelComponet(variables);
+        panelComponet(variablesC);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE); //se termina el programa cuando se cierra la ventana
-        setTitle("SERVIDOR"); // titulo
+        setTitle("CLIENTE"); // titulo
         setVisible(true);  //Hacer visible la ventana
 
     }
-    private void panelComponet(Variables variables){
+    private void panelComponet(VariablesC variablesC){
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.darkGray); //cambiar fondo
@@ -28,37 +25,45 @@ public class Ventana extends JFrame {
 
         GridBagConstraints constraints = new GridBagConstraints();
 
-        JLabel etiquetaTitulo = new JLabel("SERVIDOR",SwingConstants.CENTER);
+        JLabel etiquetaTitulo = new JLabel("CLIENTE",SwingConstants.CENTER);
         metodoEtiqueta(etiquetaTitulo,Color.cyan, 100, 20);
         metodoConstraints(constraints, 0,0,10,1,1,1);
         panel.add(etiquetaTitulo,constraints);
 
         constraints = new GridBagConstraints();
-        JLabel etiquetaIP = new JLabel("IP");
+        JLabel etiquetaIP = new JLabel("IP",SwingConstants.CENTER);
         metodoEtiqueta(etiquetaIP,Color.white, 100, 20);
         metodoConstraints(constraints, 0,1,2,1,1,1);
         panel.add(etiquetaIP,constraints);
 
-        JLabel etiquetaPuerto = new JLabel("puerto");
+        JTextField cajaIP = new JTextField("IP",SwingConstants.CENTER);
+        metodoConstraints(constraints, 2,1,2,1,1,1);
+        panel.add(cajaIP,constraints);
+
+        JLabel etiquetaPuerto = new JLabel("puerto",SwingConstants.CENTER);
         metodoEtiqueta(etiquetaPuerto,Color.white, 100, 20);
-        metodoConstraints(constraints, 2,1,1,1,1,1);
+        metodoConstraints(constraints, 0,2,1,1,1,1);
         panel.add(etiquetaPuerto,constraints);
 
-        JButton botonIniciar = new JButton("Iniciar");
-        metodoConstraints(constraints,3,1,2,1,1,1);
+        JTextField cajaPuerto = new JTextField("puerto",SwingConstants.CENTER);
+        metodoConstraints(constraints, 2,2,1,1,1,1);
+        panel.add(cajaPuerto,constraints);
+
+        JButton botonIniciar = new JButton("CONECTAR");
+        metodoConstraints(constraints,3,1,4,1,1,1);
         panel.add(botonIniciar,constraints);
 
         JTextField etiquetaEscribirMensaje = new JTextField("escribe un mensaje");
-        metodoConstraints(constraints, 0,2,3,1,1,1);
+        metodoConstraints(constraints, 0,3,3,1,1,1);
         panel.add(etiquetaEscribirMensaje,constraints);
 
         JButton botonEnviar = new JButton("Enviar");
-        metodoConstraints(constraints,3,2,2,1,1,1);
+        metodoConstraints(constraints,3,3,2,1,1,1);
         panel.add(botonEnviar,constraints);
 
         JTextArea etiquetaMensaje = new JTextArea();
         etiquetaMensaje.setEditable(false);
-        metodoConstraints(constraints, 0,3,2,1,1,1);
+        metodoConstraints(constraints, 0,4,2,1,1,1);
         constraints.fill = GridBagConstraints.BOTH;
         panel.add(etiquetaMensaje,constraints);
 
@@ -70,7 +75,7 @@ public class Ventana extends JFrame {
 
         JTextArea etiquetaHexadecimal = new JTextArea();
         etiquetaHexadecimal.setEditable(false);
-        metodoConstraints(constraints, 2,3,3,1,1,1);
+        metodoConstraints(constraints, 2,4,3,1,1,1);
         constraints.fill = GridBagConstraints.BOTH;
         panel.add(etiquetaHexadecimal,constraints);
 
@@ -81,12 +86,12 @@ public class Ventana extends JFrame {
 
         this.getContentPane().add(panel);
 
-        Listener botonListener = new Listener();
-        botonListener.ListenerEtiquetas(variables, etiquetaIP, etiquetaPuerto, etiquetaHexadecimal,etiquetaMensaje);
+        ListenerC botonListenerC = new ListenerC();
+        botonListenerC.ListenerEtiquetas(variablesC, etiquetaIP, etiquetaPuerto, etiquetaHexadecimal,etiquetaMensaje);
 
         // Asociar el ActionListener a todos los botones
-        botonIniciar.addActionListener(botonListener);
-        botonEnviar.addActionListener(botonListener);
+        botonIniciar.addActionListener(botonListenerC);
+        botonEnviar.addActionListener(botonListenerC);
 
 
     }
@@ -95,9 +100,9 @@ public class Ventana extends JFrame {
 
     }
     private GridBagConstraints metodoConstraints(GridBagConstraints constraints,
-                                           int x, int y,
-                                           int width, int height,
-                                           int weightx , int weighty)
+                                                 int x, int y,
+                                                 int width, int height,
+                                                 int weightx , int weighty)
     {
         //posicion
         constraints.gridx = x;
@@ -121,7 +126,3 @@ public class Ventana extends JFrame {
         return;
     }
 }
-
-
-
-

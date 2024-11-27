@@ -16,37 +16,46 @@ private Variables variables;
     }
 
     public void startServer(){
-        try {
 
-            System.out.println("Esperando..."); //Esperando conexión
+            new Thread(() -> {
+                int contador = 1;
 
-            cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
+                    try {
+                        System.out.println("Esperando..."); //Esperando conexión
+                        variables.setMensajeEntrada("Esperando...");
 
-            System.out.println("Cliente en línea");
+                        cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
 
-            salidaCliente = new DataOutputStream(cs.getOutputStream());
+                        System.out.println("Cliente en línea");
 
-            //Se le envía un mensaje al cliente usando su flujo de salida
-            salidaCliente.writeUTF("Petición recibida y aceptada");
+                        salidaCliente = new DataOutputStream(cs.getOutputStream());
+
+                        //Se le envía un mensaje al cliente usando su flujo de salida
+                        salidaCliente.writeUTF("Petición recibida y aceptada");
 
 
-            //Se obtiene el flujo entrante desde el cliente
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(cs.getInputStream()));
+                        //Se obtiene el flujo entrante desde el cliente
+                        BufferedReader entrada = new BufferedReader(new InputStreamReader(cs.getInputStream()));
 
-            while((mensajeServidor = entrada.readLine()) != null) //Mientras haya mensajes desde el cliente
-            {
-                //Se muestra por pantalla el mensaje recibido
-                System.out.println(mensajeServidor);
-            }
+                        while((mensajeServidor = entrada.readLine()) != null) //Mientras haya mensajes desde el cliente
+                        {
+                            //Se muestra por pantalla el mensaje recibido
+                            System.out.println(mensajeServidor);
+                            variables.setMensajeEntrada(mensajeServidor);
+                        }
 
-            //Se obtiene el flujo de salida del cliente para enviarle mensajes
+                        //Se obtiene el flujo de salida del cliente para enviarle mensajes
 
-            System.out.println("Fin de la conexión");
+                        System.out.println("Fin de la conexión");
 
-            ss.close();//Se finaliza la conexión con el cliente
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+                        ss.close();//Se finaliza la conexión con el cliente
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+            }).start();
+
+
     }
 
 }

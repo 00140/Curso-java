@@ -3,6 +3,7 @@ package JarServidor;
 public class Variables {
     String IP;
     int Puerto;
+    String MensajeEntrada;
 
     public String getIP() {
         return IP;
@@ -18,5 +19,13 @@ public class Variables {
 
     public void setPuerto(int puerto) {
         Puerto = puerto;
+    }
+
+    public String getMensajeEntrada() {
+        return MensajeEntrada;
+    }
+
+    public void setMensajeEntrada(String mensajeEntrada) {
+        MensajeEntrada = mensajeEntrada;
     }
 }
