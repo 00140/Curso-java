@@ -16,9 +16,9 @@ public class Conexion {
 
 
 
-    public Conexion(Variables variables) throws IOException //Constructor
+    public Conexion(VariablesJ variablesJ) throws IOException //Constructor
     {
-        PUERTO = variables.getPuerto();
+        PUERTO = variablesJ.getPuerto();
         ss = new ServerSocket(PUERTO);//Se crea el socket para el servidor en puerto 1234
         cs = new Socket(); //Socket para el cliente
     }

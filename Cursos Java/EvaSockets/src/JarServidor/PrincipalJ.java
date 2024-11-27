@@ -1,18 +1,15 @@
 package JarServidor;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.InetAddress;
 
-public class Principal {
+public class PrincipalJ {
     public static void main(String[] args) {
-        Variables variables = new Variables();
-        variables.setPuerto(12345);
-        variables.setIP(obtenerIP());
+        VariablesJ variablesJ = new VariablesJ();
+        variablesJ.setPuerto(12345);
+        variablesJ.setIP(obtenerIP());
 
-        Ventana ventana1 = new Ventana(variables);
-        Listener listener = new Listener();
+        VentanaJ ventanaJ1 = new VentanaJ(variablesJ);
+        ListenerJ listenerJ = new ListenerJ();
 
 //        new Timer(5000, new ActionListener() {
 //            @Override

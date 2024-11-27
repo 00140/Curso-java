@@ -4,15 +4,14 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
 
-public class Servidor extends Conexion{
+public class ServidorJ extends Conexion{
 
-private Variables variables;
-    public Servidor(Variables variables) throws IOException {
-        super(variables);
+private VariablesJ variablesJ;
+    public ServidorJ(VariablesJ variablesJ) throws IOException {
+        super(variablesJ);
 
-        this.variables = variables;
+        this.variablesJ = variablesJ;
     }
 
     public void startServer(){
@@ -22,7 +21,7 @@ private Variables variables;
 
                     try {
                         System.out.println("Esperando..."); //Esperando conexión
-                        variables.setMensajeEntrada("Esperando...");
+                        variablesJ.setMensajeEntrada("Esperando...");
 
                         cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
 
@@ -41,7 +40,7 @@ private Variables variables;
                         {
                             //Se muestra por pantalla el mensaje recibido
                             System.out.println(mensajeServidor);
-                            variables.setMensajeEntrada(mensajeServidor);
+                            variablesJ.setMensajeEntrada(mensajeServidor);
                         }
 
                         //Se obtiene el flujo de salida del cliente para enviarle mensajes

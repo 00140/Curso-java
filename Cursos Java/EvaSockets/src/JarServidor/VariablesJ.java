@@ -1,6 +1,6 @@
 package JarServidor;
 
-public class Variables {
+public class VariablesJ {
     String IP;
     int Puerto;
     String MensajeEntrada;

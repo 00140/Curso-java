@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Listener implements ActionListener {
+public class ListenerJ implements ActionListener {
 
-    private Variables variables;
+    private VariablesJ variablesJ;
 
     private JLabel etiquetaIp;
     private JLabel etiquetaPuerto;
@@ -16,12 +16,12 @@ public class Listener implements ActionListener {
     private JTextArea etiquetaMensaje;
 
         // Constructor que recibe las tres etiquetas para modificarlas
-    public void ListenerEtiquetas(Variables variables,JLabel etiquetaIp, JLabel etiquetaPuerto, JTextArea etiquetaHexa,JTextArea etiquetaMensaje) {
+    public void ListenerEtiquetas(VariablesJ variablesJ, JLabel etiquetaIp, JLabel etiquetaPuerto, JTextArea etiquetaHexa, JTextArea etiquetaMensaje) {
             this.etiquetaIp = etiquetaIp;
             this.etiquetaPuerto = etiquetaPuerto;
             this.etiquetaHexa = etiquetaHexa;
             this.etiquetaMensaje = etiquetaMensaje;
-            this.variables = variables;
+            this.variablesJ = variablesJ;
         }
 
         // Método que se ejecuta cuando se hace clic en cualquier botón
@@ -33,14 +33,14 @@ public class Listener implements ActionListener {
             // Cambiar el texto de la etiqueta correspondiente según el botón presionado
             switch (textoBoton) {
                 case "Iniciar":
-                    etiquetaIp.setText(variables.getIP());
-                    etiquetaPuerto.setText(""+variables.getPuerto());
-                    variables.setMensajeEntrada("iniciado...");
-                    agregarTextoMensaje(variables);
+                    etiquetaIp.setText(variablesJ.getIP());
+                    etiquetaPuerto.setText(""+ variablesJ.getPuerto());
+                    variablesJ.setMensajeEntrada("iniciado...");
+                    agregarTextoMensaje(variablesJ);
 
-                    Servidor serv = null;
+                    ServidorJ serv = null;
                     try {
-                        serv = new Servidor(variables);
+                        serv = new ServidorJ(variablesJ);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -55,13 +55,13 @@ public class Listener implements ActionListener {
 
         }
     }
-    public void agregarTextoMensaje(Variables variables) {
+    public void agregarTextoMensaje(VariablesJ variablesJ) {
         new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!Objects.equals(variables.getMensajeEntrada(), "")) {
-                    etiquetaMensaje.append(variables.getMensajeEntrada() + "\n");// Agrega el texto con salto de línea
-                    variables.setMensajeEntrada("");
+                if(!Objects.equals(variablesJ.getMensajeEntrada(), "")) {
+                    etiquetaMensaje.append(variablesJ.getMensajeEntrada() + "\n");// Agrega el texto con salto de línea
+                    variablesJ.setMensajeEntrada("");
                 }
             }
         }).start();

@@ -1,26 +1,23 @@
 package JarServidor;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 
-public class Ventana extends JFrame {
+public class VentanaJ extends JFrame {
 
 
-    public Ventana(Variables variables){
+    public VentanaJ(VariablesJ variablesJ){
         this.setSize(500,350); //tamaño de la ventana
 //        setResizable(false); //No cambiara de tamaño
         setLocationRelativeTo(null); //colocar ventana al centro
 
-        panelComponet(variables);
+        panelComponet(variablesJ);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE); //se termina el programa cuando se cierra la ventana
         setTitle("SERVIDOR"); // titulo
         setVisible(true);  //Hacer visible la ventana
 
     }
-    private void panelComponet(Variables variables){
+    private void panelComponet(VariablesJ variablesJ){
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.darkGray); //cambiar fondo
@@ -81,12 +78,12 @@ public class Ventana extends JFrame {
 
         this.getContentPane().add(panel);
 
-        Listener botonListener = new Listener();
-        botonListener.ListenerEtiquetas(variables, etiquetaIP, etiquetaPuerto, etiquetaHexadecimal,etiquetaMensaje);
+        ListenerJ botonListenerJ = new ListenerJ();
+        botonListenerJ.ListenerEtiquetas(variablesJ, etiquetaIP, etiquetaPuerto, etiquetaHexadecimal,etiquetaMensaje);
 
         // Asociar el ActionListener a todos los botones
-        botonIniciar.addActionListener(botonListener);
-        botonEnviar.addActionListener(botonListener);
+        botonIniciar.addActionListener(botonListenerJ);
+        botonEnviar.addActionListener(botonListenerJ);
 
 
     }
