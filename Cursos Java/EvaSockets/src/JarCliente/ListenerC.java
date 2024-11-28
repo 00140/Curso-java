@@ -4,6 +4,7 @@ package JarCliente;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Objects;
 
 public class ListenerC implements ActionListener {
@@ -25,10 +26,13 @@ public class ListenerC implements ActionListener {
 
     private JTextField cajaIP;
     private JTextField cajaPuerto;
+    private JTextField cajaMensaje;
 
-    public void ListenerCajas(JTextField cajaIP, JTextField cajaPuerto){
+    public void ListenerCajas(VariablesC variablesC, JTextField cajaIP, JTextField cajaPuerto, JTextField cajaMensaje){
         this.cajaIP = cajaIP;
         this.cajaPuerto = cajaPuerto;
+        this.cajaMensaje = cajaMensaje;
+        this.variablesC = variablesC;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -38,9 +42,26 @@ public class ListenerC implements ActionListener {
         // Cambiar el texto de la etiqueta correspondiente según el botón presionado
         switch (textoBoton) {
             case "CONECTAR":
-                System.out.println("hola");
+                try {
+                    System.out.println("Boton conectar");
+                    variablesC.setIP(cajaIP.getText());
+                    int puertoINT = Integer.parseInt(cajaPuerto.getText());
+                    variablesC.setPuerto(puertoINT);
+                    agregarTextoMensaje(variablesC);
+                    try {
+                        Cliente cliente = new Cliente(variablesC);
+                        cliente.startClient();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } catch (Exception exception) {
+                    JOptionPane.showMessageDialog(null,"Coloque la IP y el Puerto");
+                }
+
                 break;
             case "Enviar":
+                System.out.println("Enviar");
+                variablesC.setMansajeSalida(cajaMensaje.getText());
 
                 break;
             case "Gracias":
@@ -50,12 +71,15 @@ public class ListenerC implements ActionListener {
         }
     }
     public void agregarTextoMensaje(VariablesC variablesC) {
-        new Timer(1, new ActionListener() {
+        new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!Objects.equals(variablesC.getMensajesEntrada(), "")) {
-                    etiquetaMensaje.append(variablesC.getMensajesEntrada() + "\n");// Agrega el texto con salto de línea
-                    variablesC.setMensajesEntrada("");
+                if(variablesC.getMansajeSalida() != null) {
+                    if (!Objects.equals(variablesC.getMansajeSalida(), "")) {
+                        System.out.println("desde metodo" + variablesC.getMansajeSalida());
+                        etiquetaMensaje.append(variablesC.getMansajeSalida() + "\n");// Agrega el texto con salto de línea
+                        variablesC.setMansajeSalida("");
+                    }
                 }
             }
         }).start();

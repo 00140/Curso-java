@@ -36,7 +36,8 @@ public class VentanaC extends JFrame{
         metodoConstraints(constraints, 0,1,2,1,1,1);
         panel.add(etiquetaIP,constraints);
 
-        JTextField cajaIP = new JTextField("IP",SwingConstants.CENTER);
+        JTextField cajaIP = new JTextField("",SwingConstants.CENTER);
+        cajaIP.setPreferredSize(new Dimension(100, 20));
         metodoConstraints(constraints, 2,1,2,1,1,1);
         panel.add(cajaIP,constraints);
 
@@ -45,7 +46,8 @@ public class VentanaC extends JFrame{
         metodoConstraints(constraints, 0,2,1,1,1,1);
         panel.add(etiquetaPuerto,constraints);
 
-        JTextField cajaPuerto = new JTextField("puerto",SwingConstants.CENTER);
+        JTextField cajaPuerto = new JTextField("",SwingConstants.CENTER);
+        cajaPuerto.setPreferredSize(new Dimension(100, 20));
         metodoConstraints(constraints, 2,2,1,1,1,1);
         panel.add(cajaPuerto,constraints);
 
@@ -53,9 +55,9 @@ public class VentanaC extends JFrame{
         metodoConstraints(constraints,3,1,4,1,1,1);
         panel.add(botonIniciar,constraints);
 
-        JTextField etiquetaEscribirMensaje = new JTextField("escribe un mensaje");
+        JTextField cajaEscribirMensaje = new JTextField("escribe un mensaje");
         metodoConstraints(constraints, 0,3,3,1,1,1);
-        panel.add(etiquetaEscribirMensaje,constraints);
+        panel.add(cajaEscribirMensaje,constraints);
 
         JButton botonEnviar = new JButton("Enviar");
         metodoConstraints(constraints,3,3,2,1,1,1);
@@ -88,6 +90,7 @@ public class VentanaC extends JFrame{
 
         ListenerC botonListenerC = new ListenerC();
         botonListenerC.ListenerEtiquetas(variablesC, etiquetaIP, etiquetaPuerto, etiquetaHexadecimal,etiquetaMensaje);
+        botonListenerC.ListenerCajas(variablesC,cajaIP, cajaPuerto, cajaEscribirMensaje);
 
         // Asociar el ActionListener a todos los botones
         botonIniciar.addActionListener(botonListenerC);

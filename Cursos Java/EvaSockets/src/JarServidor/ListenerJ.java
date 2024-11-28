@@ -56,12 +56,14 @@ public class ListenerJ implements ActionListener {
         }
     }
     public void agregarTextoMensaje(VariablesJ variablesJ) {
-        new Timer(1, new ActionListener() {
+        new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!Objects.equals(variablesJ.getMensajeEntrada(), "")) {
-                    etiquetaMensaje.append(variablesJ.getMensajeEntrada() + "\n");// Agrega el texto con salto de línea
-                    variablesJ.setMensajeEntrada("");
+                if(variablesJ.getMensajeEntrada()!=null) {
+                    if (!Objects.equals(variablesJ.getMensajeEntrada(), "")) {
+                        etiquetaMensaje.append(variablesJ.getMensajeEntrada() + "\n");// Agrega el texto con salto de línea
+                        variablesJ.setMensajeEntrada("");
+                    }
                 }
             }
         }).start();

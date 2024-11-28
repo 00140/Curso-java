@@ -30,8 +30,11 @@ public class ConexionC {
         this.HOST = HOST;
     }
 
-    public ConexionC(String tipo) throws IOException //Constructor
+    public ConexionC(VariablesC variablesC) throws IOException //Constructor
     {
+        System.out.println("En conexion");
+            HOST = variablesC.getIP();
+            PUERTO = variablesC.getPuerto();
             cs = new Socket(HOST, PUERTO); //Socket para el cliente en localhost en puerto 1234
 
     }

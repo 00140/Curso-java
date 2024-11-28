@@ -17,7 +17,6 @@ private VariablesJ variablesJ;
     public void startServer(){
 
             new Thread(() -> {
-                int contador = 1;
 
                     try {
                         System.out.println("Esperando..."); //Esperando conexión
@@ -30,8 +29,8 @@ private VariablesJ variablesJ;
                         salidaCliente = new DataOutputStream(cs.getOutputStream());
 
                         //Se le envía un mensaje al cliente usando su flujo de salida
-                        salidaCliente.writeUTF("Petición recibida y aceptada");
 
+                        salidaCliente.writeUTF("Petición recibida y aceptada");
 
                         //Se obtiene el flujo entrante desde el cliente
                         BufferedReader entrada = new BufferedReader(new InputStreamReader(cs.getInputStream()));
@@ -39,8 +38,9 @@ private VariablesJ variablesJ;
                         while((mensajeServidor = entrada.readLine()) != null) //Mientras haya mensajes desde el cliente
                         {
                             //Se muestra por pantalla el mensaje recibido
-                            System.out.println(mensajeServidor);
                             variablesJ.setMensajeEntrada(mensajeServidor);
+                            System.out.println(mensajeServidor);
+
                         }
 
                         //Se obtiene el flujo de salida del cliente para enviarle mensajes

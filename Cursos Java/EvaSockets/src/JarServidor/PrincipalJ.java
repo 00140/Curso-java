@@ -11,14 +11,6 @@ public class PrincipalJ {
         VentanaJ ventanaJ1 = new VentanaJ(variablesJ);
         ListenerJ listenerJ = new ListenerJ();
 
-//        new Timer(5000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                variables.setMensajeEntrada("hola");
-//            }
-//        }).start();
-
-
     }
     public static String obtenerIP(){
         String thisIp = "error de Ip";
