@@ -6,7 +6,7 @@ public class Ejercicios {
 
 //      ejercicio1(); //Ejercicio1
 //        ejercicio2();
-        ejercicio5();
+        ejercicio7();
 
 
     }
@@ -113,6 +113,43 @@ public class Ejercicios {
 
         for (int i: matrizCopy) {
             System.out.println(i);
+        }
+    }
+
+//    TODO: EJERCICIO 6
+//    Crea un array de cualquier tamaño. Rellenando con numeros
+//    Mostrando el array sin ordenar por consola
+//    Ordenar con el metodo burbuja y mostrar en consola
+    private static void ejercicio6(){
+        int[] matriz = {100,7,8,5,4,1,0};
+        int temp = 0;
+        for (int elemento : matriz){
+            System.out.print(" "+elemento);
+        }
+        System.out.println("\n");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 1; j < matriz.length; j++) {
+                if (matriz[j] < matriz[j-1]) {
+                    temp = matriz[j];
+                    matriz[j] = matriz[j-1];
+                    matriz[j-1] = temp;
+                }
+            }
+        }
+        for (int elemento : matriz){
+            System.out.print(" "+elemento);
+        }
+    }
+
+    //    TODO: EJERCICIO 7
+    
+    private static void ejercicio7() {
+        String[] nombres = {"Luis", "Jaime", "Ruby", "Roberto"};
+        int[] edad = {40, 50, 25, 18};
+        char[] sexo = {'H', 'H', 'M', 'H'};
+
+        for (char elemento : sexo) {
+            System.out.print(" " + elemento);
         }
     }
 
