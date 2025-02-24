@@ -6,7 +6,7 @@ public class Ejercicios {
 
 //      ejercicio1(); //Ejercicio1
 //        ejercicio2();
-        ejercicio7();
+        ejercicio8();
 
 
     }
@@ -150,6 +150,32 @@ public class Ejercicios {
 
         for (char elemento : sexo) {
             System.out.print(" " + elemento);
+        }
+    }
+
+    //    TODO: EJERCICIO 7
+    private static void ejercicio8(){
+        int[] aray10 = new int[10];
+        int[] aray10_2 = new int[aray10.length];
+        Scanner lector = new Scanner(System.in);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Coloca el valor para el array: ");
+            int usuInt = lector.nextInt();
+            aray10[i] = usuInt;
+        }
+        int contador = 0;
+        for (int i = 0; i < aray10.length; i++) {
+            int r = aray10[i] % 2;
+            System.out.println(r);
+            if (r == 1){
+                aray10[i] = aray10_2[contador];
+                contador++;
+            }
+        }
+        System.out.println("Los pares de tu array son: ");
+        for (int element : aray10){
+            System.out.println(element);
         }
     }
 
